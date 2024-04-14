@@ -1,12 +1,18 @@
-﻿using System;
+﻿
+using System;
+using System.IO;
 using FameDirecBL;
+using BL;
+using Model;
 
-namespace FameDirec
+
+namespace FameDirector
 {
     public class Program
     {
         public static void Main(string[] args)
         {
+
             DirectorList Direc = new DirectorList();
 
             Directors Greta = new Directors();
@@ -57,7 +63,8 @@ namespace FameDirec
                 Awkwafina Is Nora from Queens TV (2020)
                 Legion TV (2017-2019)
                 Childrens Hospital TV (2008 - 2016)
-                """;
+                """
+            ;
 
             Directors Speilberg = new Directors();
             Speilberg.director = "Steven Speilberg";
@@ -78,7 +85,8 @@ namespace FameDirec
             Five Came Back (2017)
             Ready Player One (2018)
             James Cameron Story of Science Fiction (2018) 
-            """;
+            """
+            ;
 
             Directors Woody = new Directors();
             Woody.director = "Woody Allen";
@@ -95,89 +103,80 @@ namespace FameDirec
                  A night at the Roxbury (1998) 
                  Loser (2000)
                """;
-            Heckerling.tvSeriesName = """                                                                                                                      
-Clueless (1996)
-The Office (2005)
-Gossip Girl (2007)
-The Carrie Diaries (2013)
-Weird City (2019)
-""";
+            Heckerling.tvSeriesName = """
+                Clueless (1996)
+                The Office (2005)
+                Gossip Girl (2007)
+                The Carrie Diaries (2013)
+                Weird City (2019)
+               """;
+            Console.Write("Enter Username: ");
+            string userName = Console.ReadLine();
+            Console.Write("Enter Username: ");
+            
 
+            Verify Verify = new Verify();
+            bool result = Verify.VerifyUser(userName);
 
-           
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            DirectorList Directs = new DirectorList();
-
-            Console.WriteLine("Select a Director:");
-            Console.WriteLine();
-
-            while (true)
+            if (result)
             {
-                Console.WriteLine("1. Greta Gerwig");
-                Console.WriteLine("2. Christopher Nolan");
-                Console.WriteLine("3. Daniel Kwan");
-                Console.WriteLine("4. Steven Speilberg");
-                Console.WriteLine("5. Woody Allen");
-                Console.WriteLine("6. Amy Heckerling");
-                Console.WriteLine();
+                DirectorList Directs = new DirectorList();
+
                 Console.WriteLine("Select a Director:");
+                Console.WriteLine();
 
-                string choices = Console.ReadLine();
-
-                switch (choices)
+                while (true)
                 {
-                    case "1":
-                        Direc.DisplayDirectorsInfo(Greta);
-                        break;
+                    Console.WriteLine("1. Greta Gerwig");
+                    Console.WriteLine("2. Christopher Nolan");
+                    Console.WriteLine("3. Daniel Kwan");
+                    Console.WriteLine("4. Steven Speilberg");
+                    Console.WriteLine("5. Woody Allen");
+                    Console.WriteLine("6. Amy Heckerling");
+                    Console.WriteLine();
+                    Console.WriteLine("Select a Director:");
 
-                    case "2":
-                        Direc.DisplayDirectorsInfo(Nolan);
-                        break;
+                    string choices = Console.ReadLine();
 
-                    case "3":
-                        Direc.DisplayDirectorsInfo(DanielKwan);
-                        break;
-                    case "4":
-                        Direc.DisplayDirectorsInfo(Speilberg);
-                        break;
-                    case "5":
-                        Direc.DisplayDirectorsInfo(Woody);
-                        break;
-                    case "6":
-                        Direc.DisplayDirectorsInfo(Heckerling);
-                        break;
+                    switch (choices)
+                    {
+                        case "1":
+                            Direc.DisplayDirectorsInfo(Greta);
+                            break;
+
+                        case "2":
+                            Direc.DisplayDirectorsInfo(Nolan);
+                            break;
+
+                        case "3":
+                            Direc.DisplayDirectorsInfo(DanielKwan);
+                            break;
+                        case "4":
+                            Direc.DisplayDirectorsInfo(Speilberg);
+                            break;
+                        case "5":
+                            Direc.DisplayDirectorsInfo(Woody);
+                            break;
+                        case "6":
+                            Direc.DisplayDirectorsInfo(Heckerling);
+                            return;
+
+                        
+                            
 
 
-                    default:
-                        Console.WriteLine("Invalid Input.");
-                        Console.WriteLine();
-                        Console.WriteLine("-------------------");
-                        break;
-                        return;
-
+                        default:
+                            Console.WriteLine("Invalid Input.");
+                            Console.WriteLine();
+                            Console.WriteLine("-------------------");
+                            break;
+                            return;
+                    }
                 }
+            }
+            else
+            {
+                Console.WriteLine("Error...");
             }
         }
     }
